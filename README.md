@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tracky AI - Realtime Multimodal Learner Behavior Tracking
+
+A Next.js application that uses TensorFlow.js to track learner behavior in real-time through webcam analysis. The app provides live metrics for attention, engagement, eye contact, head movement, and emotion detection.
+
+## Features
+
+- **Real-time Face Detection**: Uses TensorFlow.js MediaPipe Face Mesh for accurate facial landmark detection
+- **Behavior Metrics**: Tracks attention, engagement, eye contact, and head movement
+- **Emotion Recognition**: Analyzes facial expressions to determine dominant emotions
+- **Live Camera UI**: Clean, modern interface that looks like a video call application
+- **Real-time Overlays**: Visual indicators showing face detection and landmarks
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Tech Stack
+
+- **Next.js 15** with App Router
+- **TypeScript** for type safety
+- **TensorFlow.js** for AI/ML capabilities
+- **shadcn/ui** for modern UI components
+- **Tailwind CSS** for styling
+- **MediaPipe Face Mesh** for facial landmark detection
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Open your browser** and navigate to `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Allow camera access** when prompted
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. **Click "Start Camera"** to begin behavior tracking
 
-## Learn More
+## How It Works
 
-To learn more about Next.js, take a look at the following resources:
+### Face Detection
+The application uses TensorFlow.js with MediaPipe Face Mesh to detect facial landmarks in real-time. This provides 468 3D facial landmarks that are used for various calculations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Behavior Metrics
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Attention**: Calculated based on head position and eye contact
+- **Engagement**: Derived from facial expressions and movement patterns
+- **Eye Contact**: Estimated based on eye position relative to camera center
+- **Head Movement**: Tracks movement between frames
+- **Emotion Analysis**: Basic emotion detection based on facial landmark positions
 
-## Deploy on Vercel
+### Real-time Processing
+The application processes video frames at 30fps, updating metrics and overlays in real-time. The face detection runs on the client-side using WebGL acceleration.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `BehaviorTracker`: Main component handling camera and UI
+- `useFaceDetection`: Custom hook for TensorFlow.js integration
+- Real-time metrics display with progress bars
+- Camera controls (start/stop/pause/reset)
+
+## Browser Requirements
+
+- Modern browser with WebGL support
+- Camera access permissions
+- HTTPS (required for camera access in production)
+
+## Limitations
+
+- Emotion detection is simplified and may not be as accurate as dedicated emotion recognition models
+- Eye contact calculation is basic and could be improved with gaze tracking
+- Performance depends on device capabilities and camera quality
+
+## Future Enhancements
+
+- Integration with more sophisticated emotion recognition models
+- Gaze tracking for more accurate eye contact detection
+- Data persistence and analytics
+- Multi-person detection
+- Customizable alert thresholds
+- Export functionality for behavior reports
+
+## License
+
+MIT License - feel free to use this project for educational or commercial purposes.
