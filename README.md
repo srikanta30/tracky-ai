@@ -2,9 +2,6 @@
 
 <img width="882" height="533" alt="Screenshot 2025-09-10 at 11 02 40 PM" src="https://github.com/user-attachments/assets/e539b6e0-145c-4293-9011-497320cc3db0" />
 
-
-A Next.js application that uses TensorFlow.js to track learner behavior in real-time through webcam analysis. The app provides live metrics for attention, engagement, eye contact, head movement, and emotion detection.
-
 ## Features
 
 - **Real-time Face Detection**: Uses TensorFlow.js MediaPipe Face Mesh for accurate facial landmark detection
